@@ -7,8 +7,8 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
 	auth: authReducer,
 	project: projectReducer,
-	firebase: firebaseReducer,
-	firestore: firestoreReducer,
+	firebase: firebaseReducer, //to do the auth syncing
+	firestore: firestoreReducer, // sync our file store to our state using firestore
 });
 
 export default rootReducer;
