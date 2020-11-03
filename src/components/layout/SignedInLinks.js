@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { signOut } from '../../store/actions/authActions';
 
-const SignedInLinks = ({ signOut }) => {
+const SignedInLinks = ({ signOut, inititals }) => {
 	return (
 		<div>
 			<ul className='right'>
@@ -17,16 +17,23 @@ const SignedInLinks = ({ signOut }) => {
 				</li>
 				<li>
 					<NavLink to='/' className='btn btn-floating pink lighten-1'>
-						NN
+						{inititals || 'user'}
 					</NavLink>
 				</li>
 			</ul>
 		</div>
 	);
 };
+const mapStateToProps = (state) => {
+	const inititals = state.firebase.profile.initials;
+	// console.log(inititals, 'sssssss');
+	return {
+		inititals: inititals,
+	};
+};
 const mapDispatchToProps = (dispatch) => {
 	return {
 		signOut: () => dispatch(signOut()),
 	};
 };
-export default connect(null, mapDispatchToProps)(SignedInLinks);
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks);

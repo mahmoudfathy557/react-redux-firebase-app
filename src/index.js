@@ -15,22 +15,12 @@ import 'firebase/firestore';
 const rrfConfig = {
 	userProfile: 'users',
 	useFirestoreForProfile: true,
-	enableRedirectHandling: false,
-	resetBeforeLogin: false,
 };
 
 const store = createStore(
 	rootReducer,
 	compose(applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })), reduxFirestore(firebase)),
 );
-
-// //construct required properties
-// const profileSpecificProps = {
-//   userProfile: 'users',
-//   useFirestoreForProfile: true,
-//   enableRedirectHandling: false,
-//   resetBeforeLogin: false
-// }
 
 const rffProps = {
 	firebase,
